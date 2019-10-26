@@ -1,6 +1,5 @@
 FROM docker.io/openmage/debian:buster-latest
 
-
 COPY root /
 
 ## configure default environment stuff and file permissions
@@ -24,7 +23,7 @@ RUN set -xe; \
     		echo 'Pin-Priority: -1'; \
     	} > /etc/apt/preferences.d/no-libwebp;
 
-ARG IMAGICK_RUNTIME_REQUIREMENTS="libpng16-16 liblcms2-2 libgomp1 libltdl7 bzip2"
+ARG IMAGICK_RUNTIME_REQUIREMENTS="libpng16-16 liblcms2-2 libgomp1 libltdl7 bzip2 gosu"
 ARG IMAGICK_RUNTIME_REQUIREMENTS_EXTRA=""
 ARG IMAGICK_BUILD_REQUIREMENTS="curl cmake gcc libtool libedit-dev liblcms2-dev build-essential autoconf automake pkg-config libpng-dev libltdl-dev nasm"
 ARG IMAGICK_BUILD_REQUIREMENTS_EXTRA=""
