@@ -1,4 +1,4 @@
-FROM docker.io/openmage/debian:buster-latest
+FROM openmage/debian:buster-latest
 
 COPY root /
 

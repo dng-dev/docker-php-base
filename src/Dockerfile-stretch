@@ -1,4 +1,4 @@
-FROM docker.io/openmage/debian:stretch-latest
+FROM openmage/debian:stretch-latest
 
 COPY root /
 
