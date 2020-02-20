@@ -4,7 +4,7 @@ COPY root /
 
 ## configure default environment stuff and file permissions
 RUN set -xe; \
-    chmod 755 /usr/local/bin/{docker-entrypoint,docker-fpm-healthcheck,docker-php-ext-configure,docker-php-ext-enable,docker-php-ext-install,docker-php-pecl-install,docker-php-source}; \
+    chmod 755 /usr/local/bin/{docker-php-source-prepare,docker-entrypoint,docker-fpm-healthcheck,docker-php-ext-configure,docker-php-ext-enable,docker-php-ext-install,docker-php-pecl-install,docker-php-source}; \
     \
         ## block packages from being installed
     	{ \
@@ -30,17 +30,17 @@ ARG IMAGICK_BUILD_REQUIREMENTS_EXTRA=""
 ARG IMAGICK_EXTRA_CONFIGURE_ARGS=""
 
 ARG MOZJPEG_EXTRA_CONFIGURE_ARGS=""
-ARG MOZJPEG_VERSION="bbb7550709d396aae66d5ea5fad5ef06b1ec7f59"
+ARG MOZJPEG_VERSION="1d2320994dd0d293d39cfaea3d13060b60f32c45"
 
 ARG TIFF_EXTRA_CONFIGURE_ARGS=""
-ARG TIFF_VERSION="4.0.10"
+ARG TIFF_VERSION="4.1.0"
 
-ARG WEBP_VERSION="1.0.3"
+ARG WEBP_VERSION="1.1.0"
 ARG WEBP_EXTRA_CONFIGURE_ARGS=""
 
-ARG OPENJPEG_VERSION="5875a6b44618fb7dfd5cd6d742533eaee2014060"
+ARG OPENJPEG_VERSION="563ecfb55ca77c0fc5ea19e4885e00f55ec82ca9"
 
-ARG IMAGICK_VERSION="7.0.8-68"
+ARG IMAGICK_VERSION="7.0.9-24"
 ARG IMAGICK_EXTRA_CONFIGURE_ARGS=""
 
 ## configure imagick and the dependencies

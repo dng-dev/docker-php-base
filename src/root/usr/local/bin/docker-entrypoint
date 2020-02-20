@@ -11,8 +11,6 @@ elif [ "$1" = "/usr/local/bin/composer" ] || [ "$1" = "composer" ]; then
   exec gosu 33:33 "$@"
 elif [ "$1" = "/usr/local/bin/magerun" ] || [ "$1" = "magerun" ]; then
   exec gosu 33:33 "$@"
-elif [ "$1" = "/usr/local/bin/magerun" ] || [ "$1" = "magerun" ]; then
-  exec gosu 33:33 "$@"
 elif [ "$1" = "/usr/local/bin/magerun2" ] || [ "$1" = "magerun2" ]; then
   exec gosu 33:33 "$@"
 elif [ "$1" = "/usr/local/sbin/php-fpm" ] || [ "$1" = "php-fpm" ]; then
