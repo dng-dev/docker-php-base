@@ -17,6 +17,10 @@ This image is automatically build with following cron expression `0 0 * * *`.
 
 All notable changes to this project will be documented in this section.
 
+### 2020-02-24
+
+- removed unused if statement
+
 ### 2020-02-20
 
 - added source prepare script to get php src by version argument

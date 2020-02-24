@@ -66,22 +66,6 @@ if [[ "${PHP_VERSION}" =~ ^([0-9]+).(([0-9]+)(.([0-9]+))?)(-(rc[0-9]+))?(-([0-9a
         echo "Version:                  ${PHP_VERSION%%-*}"
         echo "Major Version:            ${majorVersion}"
         echo "Minor Version:            ${minorVersion}"
-        if [[ -n "${patchVersion}" ]]; then
-            echo "Patch Version:            ${patchVersion}"
-            targetFolder+=".${patchVersion}"
-            sourceFolder+=".${patchVersion}"
-        fi
-        if [[ -n "${rcVersion}" ]]; then
-            echo "RC Version:               ${rcVersion}"
-            targetFolder+=$(echo "${rcVersion}"| tr '[A-Z]' '[a-z]')
-            sourceFolder+=$(echo "${rcVersion}"| tr '[A-Z]' '[a-z]')
-        fi
-        if [[ -n "${type}" ]]; then
-            echo "Type:                     ${type}"
-            targetFolder+="-${type}"
-            sourceFolder+="-${type}"
-        fi
-
         if [[ -z "${rcVersion}" ]]; then
             phpApiUrl="https://secure.php.net/releases/index.php?json&max=100&version=${PHP_VERSION%%-*}"
             ## recover / workaround dot maybe
