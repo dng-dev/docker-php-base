@@ -22,12 +22,11 @@ usage() {
 case "${1:-}" in
 	extract)
 		mkdir -p "${PHP_SRC_DIR}"
-		if [[ ! -f "${PHP_SRC_DIR}/.docker-extracted" ]]; then
-		    docker-package-download -o "${PHP_SRC_FILE}" "${PHP_URL}"
-		    echo "${PHP_SHA256} ${PHP_SRC_FILE}" | sha256sum -c -
-		    tar --strip-components=1 -C "${PHP_SRC_DIR}" -xzf "${PHP_SRC_FILE}"
-			touch "${PHP_SRC_DIR}/.docker-extracted"
-		fi
+        if [[ ! -f "${PHP_SRC_DIR}/.docker-extracted" ]]; then
+            docker-package-download -o "${PHP_SRC_FILE}" "https://codeload.github.com/php/php-src/tar.gz/PHP-${PHP_VERSION}"
+            tar --strip-components=1 -C "${PHP_SRC_DIR}" -xzf "${PHP_SRC_FILE}"
+            touch "${PHP_SRC_DIR}/.docker-extracted"
+        fi
 		;;
 
 	delete)
