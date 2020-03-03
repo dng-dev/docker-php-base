@@ -23,7 +23,7 @@ case "${1:-}" in
 	extract)
 		mkdir -p "${PHP_SRC_DIR}"
         if [[ ! -f "${PHP_SRC_DIR}/.docker-extracted" ]]; then
-            docker-package-download -o "${PHP_SRC_FILE}" "https://codeload.github.com/php/php-src/tar.gz/PHP-${PHP_VERSION}"
+            docker-package-download -o "${PHP_SRC_FILE}" "https://www.php.net/distributions/php-${PHP_VERSION}.tar.gz"
             tar --strip-components=1 -C "${PHP_SRC_DIR}" -xzf "${PHP_SRC_FILE}"
             touch "${PHP_SRC_DIR}/.docker-extracted"
         fi
