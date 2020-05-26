@@ -6,6 +6,10 @@ COPY root /
 RUN set -xe; \
     chmod 755 /usr/local/bin/{docker-php-source-prepare,docker-entrypoint,docker-fpm-healthcheck,docker-php-ext-configure,docker-php-ext-enable,docker-php-ext-install,docker-php-pecl-install,docker-php-source}; \
     rm -rf /etc/apt/preferences.d/debian_main_cmake; \
+    mkdir /home/www-data; \
+    chmod 711 /home/www-data; \
+    chown www-data:www-data /home/www-data; \
+    usermod -d /home/www-data www-data; \
     \
         ## block packages from being installed
     	{ \
