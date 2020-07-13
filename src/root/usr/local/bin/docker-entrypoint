@@ -19,7 +19,7 @@ fi
 DOCKER_UID=$(stat -c "%u" "${DOCUMENT_ROOT}")
 DOCKER_GID=$(stat -c "%g" "${DOCUMENT_ROOT}")
 
-if [[ "${DOCKER_UID}" -ne "33" || "${DOCKER_GID}" -ne "33" ]] && [[ ! -f /root/.uid-gid-fixed ]]; then
+if [[ "${DOCKER_UID}" -ne "33" || "${DOCKER_GID}" -ne "33" ]] && [[ ! -f /root/.uid-gid-fixed && "${FIX_UID_GID}" = "true" ]]; then
   CONFLICT_USER=$(getent passwd "${DOCKER_UID}" | cut -d: -f1)
   CONFLICT_GROUP=$(getent group "${DOCKER_GID}" | cut -d: -f1)
   echo "Docker: uid = ${DOCKER_UID}, gid = ${DOCKER_GID}"
@@ -32,6 +32,10 @@ if [[ "${DOCKER_UID}" -ne "33" || "${DOCKER_GID}" -ne "33" ]] && [[ ! -f /root/.
   [ ! -z "${CONFLICT_GROUP}" ] && groupmod -g $(expr 50000 - "${CONFLICT_OFFSET}" - "${DOCKER_GID}") "${CONFLICT_GROUP}"
   groupmod -g "${DOCKER_GID}" www-data
   touch /root/.uid-gid-fixed
+fi
+
+if test -f "/usr/local/bin/docker-entrypoint-custom"; then
+source "/usr/local/bin/docker-entrypoint-custom"
 fi
 
 if [ "$1" = "/usr/local/bin/php" ] || [ "$1" = "php" ]; then
